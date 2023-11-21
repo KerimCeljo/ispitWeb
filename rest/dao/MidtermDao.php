@@ -46,6 +46,9 @@ class MidtermDao {
     * Implement DAO method used to get cap table
     */
     public function cap_table(){
+      $stmt = $this->conn->prepare("SELECT share_class_id FROM cap_table");
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
@@ -53,6 +56,25 @@ class MidtermDao {
     * Implement DAO method used to add cap table record
     */
     public function add_cap_table_record(){
+
+      $sql = "INSERT INTO cap_table (share_class_id, share_class_category_id, investo_id, diluted_shares, )
+    VALUES (:share_class_id, :share_class_category_id, :investo_id, :diluted_shares)";
+
+    $statement = $this->conn->prepare($sql);
+/*
+    foreach ($data as $dataRow) {
+
+        foreach ($dataRow as $key => $value) {
+                $statement->bindValue(":$key", $value);
+        }
+        
+        // Execute the prepared statement (we preped this statement in the foreach above) 
+        $statement->execute();
+
+        // Reset the bindings for the next iteration
+        $statement->closeCursor();
+    }
+*/
 
     }
 

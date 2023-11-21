@@ -12,6 +12,8 @@ class MidtermService {
     * Implement service method to return detailed cap-table
     */
     public function cap_table(){
+        $results = $this->dao->cap_table();
+        return $results;        
 
     }
 

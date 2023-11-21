@@ -18,6 +18,9 @@ Flight::route('GET /cap-table', function(){
     * Outpus is given in figure 2
     * This endpoint should return output in JSON format
     */
+    $results = new MidtermService();
+    //print_r($results);
+    Flight::json($results->categories());
 });
 
 Flight::route('POST /cap-table-record', function(){
@@ -26,6 +29,19 @@ Flight::route('POST /cap-table-record', function(){
     * Example output is given in figure 3
     * This endpoint should return output in JSON format
     */
+
+    echo'test';
+
+    $json = file_get_contents('ispitWeb');
+    $json_decoded = json_decode( $json, true ); 
+
+    // JSON_UNESCAPED_UNICODE
+
+    $midtermDao = new MidtermDao;
+    $midtermDao->add_cap_table_record($json_decoded);
+
+
+
 });
 
 
